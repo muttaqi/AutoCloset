@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/datavec-examples/pom.xml" />
+        <option value="$PROJECT_DIR$/dl4j-cuda-specific-examples/pom.xml" />
+        <option value="$PROJECT_DIR$/dl4j-spark-examples/dl4j-spark-cluster/pom.xml" />
+        <option value="$PROJECT_DIR$/dl4j-spark-examples/dl4j-spark/pom.xml" />
+        <option value="$PROJECT_DIR$/dl4j-spark-examples/pom.xml" />
+        <option value="$PROJECT_DIR$/lstm-hdfs/pom.xml" />
+        <option value="$PROJECT_DIR$/nd4j-examples/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/rl4j-examples/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/classes" />
+  </component>
+</project>
