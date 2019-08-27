@@ -1,0 +1,1212 @@
+2019-08-27 18:01:21,936 - [INFO] - from org.datavec.image.recordreader.BaseImageRecordReader in main
+                
+ImageRecordReader: 4 label classes inferred using label generator ParentPathLabelGenerator
+
+2019-08-27 18:01:21,952 - [INFO] - from org.datavec.image.recordreader.BaseImageRecordReader in main
+                
+ImageRecordReader: 4 label classes inferred using label generator ParentPathLabelGenerator
+
+2019-08-27 18:01:21,992 - [INFO] - from org.nd4j.linalg.factory.Nd4jBackend in main
+                
+Loaded [CpuBackend] backend
+
+2019-08-27 18:01:22,923 - [INFO] - from org.nd4j.nativeblas.NativeOpsHolder in main
+                
+Number of threads used for NativeOps: 4
+
+2019-08-27 18:01:23,085 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2019-08-27 18:01:23,091 - [INFO] - from org.nd4j.linalg.api.ops.executioner.DefaultOpExecutioner in main
+                
+Backend used: [CPU]; OS: [Windows 10]
+
+2019-08-27 18:01:23,091 - [INFO] - from org.nd4j.linalg.api.ops.executioner.DefaultOpExecutioner in main
+                
+Cores: [8]; Memory: [2.2GB];
+
+2019-08-27 18:01:23,091 - [INFO] - from org.nd4j.linalg.api.ops.executioner.DefaultOpExecutioner in main
+                
+Blas vendor: [MKL]
+
+2019-08-27 18:01:23,706 - [INFO] - from org.deeplearning4j.nn.multilayer.MultiLayerNetwork in main
+                
+Starting MultiLayerNetwork with WorkspaceModes set to [training: ENABLED; inference: ENABLED], cacheMode set to [NONE]
+
+2019-08-27 18:01:24,915 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21380 is 0.0023518986110074164
+
+2019-08-27 18:01:25,179 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21400 is 0.0015492198340660707
+
+2019-08-27 18:01:25,437 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21420 is 0.0022400292314284143
+
+2019-08-27 18:01:25,685 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21440 is 0.0015055991816720566
+
+2019-08-27 18:01:25,920 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21460 is 0.0025298457552423797
+
+2019-08-27 18:01:26,147 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21480 is 0.0025943357516669723
+
+2019-08-27 18:01:26,387 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21500 is 0.0021792278208090012
+
+2019-08-27 18:01:26,648 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21520 is 0.00215826393636618
+
+2019-08-27 18:01:26,910 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21540 is 0.0023163476704961853
+
+2019-08-27 18:01:27,147 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21560 is 0.0026255326118651396
+
+2019-08-27 18:01:27,377 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21580 is 0.002099784817512537
+
+2019-08-27 18:01:27,602 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21600 is 0.002019887075572052
+
+2019-08-27 18:01:27,879 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21620 is 0.002928536448143706
+
+2019-08-27 18:01:28,134 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21640 is 0.0019300150950312086
+
+2019-08-27 18:01:28,372 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21660 is 0.010144150861642564
+
+2019-08-27 18:01:28,598 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21680 is 0.002863862116443968
+
+2019-08-27 18:01:28,830 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21700 is 0.0010878446980382363
+
+2019-08-27 18:01:29,070 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21720 is 0.0026828880932140606
+
+2019-08-27 18:01:29,322 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21740 is 0.0019521858463156633
+
+2019-08-27 18:01:29,555 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21760 is 0.0036907184696241785
+
+2019-08-27 18:01:29,793 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21780 is 0.003879734987055508
+
+2019-08-27 18:01:30,022 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21800 is 0.0014920763928963083
+
+2019-08-27 18:01:30,251 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21820 is 0.0020773254915227796
+
+2019-08-27 18:01:30,494 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21840 is 0.0025013928680575337
+
+2019-08-27 18:01:30,724 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21860 is 0.0022891079254283853
+
+2019-08-27 18:01:30,942 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21880 is 0.002606990835611751
+
+2019-08-27 18:01:31,172 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21900 is 0.0012362154816514845
+
+2019-08-27 18:01:31,402 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21920 is 0.0028025613147974722
+
+2019-08-27 18:01:31,624 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21940 is 0.0015073373679377086
+
+2019-08-27 18:01:31,849 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21960 is 0.0018770073982993295
+
+2019-08-27 18:01:32,076 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 21980 is 0.009727631066924898
+
+2019-08-27 18:01:32,299 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22000 is 0.0031738386970959513
+
+2019-08-27 18:01:32,525 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22020 is 0.0019316903173331925
+
+2019-08-27 18:01:32,762 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22040 is 0.0025395603860077247
+
+2019-08-27 18:01:32,991 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22060 is 0.0015960238351307708
+
+2019-08-27 18:01:33,224 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22080 is 0.0021864756553594163
+
+2019-08-27 18:01:33,448 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22100 is 0.0011398198899393065
+
+2019-08-27 18:01:33,666 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22120 is 0.0020163384019163005
+
+2019-08-27 18:01:33,878 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22140 is 0.003577484547288467
+
+2019-08-27 18:01:34,103 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22160 is 0.0017174957552420266
+
+2019-08-27 18:01:34,333 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22180 is 0.0019830783368210547
+
+2019-08-27 18:01:34,561 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22200 is 0.002039506543014514
+
+2019-08-27 18:01:34,773 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22220 is 0.002905036298694293
+
+2019-08-27 18:01:35,001 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22240 is 0.0027807942624490604
+
+2019-08-27 18:01:35,214 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22260 is 0.002597208058848776
+
+2019-08-27 18:01:35,447 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22280 is 0.0029971283751665
+
+2019-08-27 18:01:35,690 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22300 is 0.0015528176852070857
+
+2019-08-27 18:01:35,920 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22320 is 0.0015032540429895135
+
+2019-08-27 18:01:36,147 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22340 is 0.0012576476068619541
+
+2019-08-27 18:01:36,370 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22360 is 0.0027211560774224666
+
+2019-08-27 18:01:36,589 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22380 is 0.0020100751908211406
+
+2019-08-27 18:01:36,796 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22400 is 0.002430668088519579
+
+2019-08-27 18:01:37,026 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22420 is 0.004029156016618458
+
+2019-08-27 18:01:37,252 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22440 is 0.0012048099386829706
+
+2019-08-27 18:01:37,474 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22460 is 0.0038348156215427167
+
+2019-08-27 18:01:37,717 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22480 is 0.0019842361290295513
+
+2019-08-27 18:01:37,941 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22500 is 0.001460266008937154
+
+2019-08-27 18:01:38,165 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22520 is 0.0027492369591441304
+
+2019-08-27 18:01:38,372 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22540 is 0.0017884664858162666
+
+2019-08-27 18:01:38,586 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22560 is 0.0031067794471229863
+
+2019-08-27 18:01:38,862 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22580 is 0.001535382164787285
+
+2019-08-27 18:01:39,099 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22600 is 0.0019233329891737213
+
+2019-08-27 18:01:39,317 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22620 is 0.0012480440524795825
+
+2019-08-27 18:01:39,535 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22640 is 0.0013330171395488067
+
+2019-08-27 18:01:39,743 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22660 is 0.00150724528057232
+
+2019-08-27 18:01:39,975 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22680 is 0.0013890290241015124
+
+2019-08-27 18:01:40,206 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22700 is 0.0037455669287243523
+
+2019-08-27 18:01:40,436 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22720 is 0.003009041562406537
+
+2019-08-27 18:01:40,653 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22740 is 0.0019355354410105208
+
+2019-08-27 18:01:40,883 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22760 is 0.002963838176735706
+
+2019-08-27 18:01:41,095 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22780 is 0.0019055553067608912
+
+2019-08-27 18:01:41,315 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22800 is 0.002390862177525179
+
+2019-08-27 18:01:41,534 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22820 is 0.0019616485538910752
+
+2019-08-27 18:01:41,743 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22840 is 0.0011152796039923401
+
+2019-08-27 18:01:41,964 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22860 is 0.0020994110458170782
+
+2019-08-27 18:01:42,168 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22880 is 0.0022667369355988884
+
+2019-08-27 18:01:42,382 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22900 is 0.0046611876115385375
+
+2019-08-27 18:01:42,605 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22920 is 0.0021436113135395573
+
+2019-08-27 18:01:42,815 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22940 is 0.003123511319968526
+
+2019-08-27 18:01:43,020 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22960 is 0.0013483463345324081
+
+2019-08-27 18:01:43,238 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 22980 is 0.0029723223390629673
+
+2019-08-27 18:01:43,445 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23000 is 0.0029682497561530144
+
+2019-08-27 18:01:43,680 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23020 is 0.0034429956966124907
+
+2019-08-27 18:01:43,894 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23040 is 0.002415508514549788
+
+2019-08-27 18:01:44,102 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23060 is 0.0013345602883690988
+
+2019-08-27 18:01:44,310 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23080 is 0.004732793706153998
+
+2019-08-27 18:01:44,540 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23100 is 0.001287971160483454
+
+2019-08-27 18:01:44,779 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23120 is 0.0022577959290769768
+
+2019-08-27 18:01:44,988 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23140 is 0.012459191639849928
+
+2019-08-27 18:01:45,217 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23160 is 0.0022587812601459973
+
+2019-08-27 18:01:45,426 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23180 is 0.009950239887962406
+
+2019-08-27 18:01:45,649 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23200 is 0.002649770605677921
+
+2019-08-27 18:01:45,867 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23220 is 0.002354010594010598
+
+2019-08-27 18:01:46,100 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23240 is 0.0012081765424354957
+
+2019-08-27 18:01:46,337 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23260 is 0.0016082795399240497
+
+2019-08-27 18:01:46,575 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23280 is 0.009708953848026808
+
+2019-08-27 18:01:46,821 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23300 is 0.0023558343317473516
+
+2019-08-27 18:01:47,078 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23320 is 0.003258580504448608
+
+2019-08-27 18:01:47,317 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23340 is 0.0023190604329858273
+
+2019-08-27 18:01:47,554 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23360 is 0.0021054484407116093
+
+2019-08-27 18:01:47,800 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23380 is 0.0025082347772499135
+
+2019-08-27 18:01:48,046 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23400 is 0.003768816251145191
+
+2019-08-27 18:01:48,303 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23420 is 0.001364410289070932
+
+2019-08-27 18:01:48,529 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23440 is 0.0019014177300573833
+
+2019-08-27 18:01:48,758 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23460 is 0.002271904524848631
+
+2019-08-27 18:01:48,970 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23480 is 0.0023580686929234873
+
+2019-08-27 18:01:49,202 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23500 is 0.003953285319087337
+
+2019-08-27 18:01:49,413 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23520 is 0.0017843740249288344
+
+2019-08-27 18:01:49,628 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23540 is 0.0030574712305623053
+
+2019-08-27 18:01:49,857 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23560 is 0.002947891321931368
+
+2019-08-27 18:01:50,079 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23580 is 0.004112845655278789
+
+2019-08-27 18:01:50,305 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23600 is 0.0020128454755018593
+
+2019-08-27 18:01:50,511 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23620 is 0.0015399698088069073
+
+2019-08-27 18:01:50,722 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23640 is 0.0024375210440529516
+
+2019-08-27 18:01:50,940 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23660 is 0.0016778286778593525
+
+2019-08-27 18:01:51,152 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23680 is 0.0016207034277986737
+
+2019-08-27 18:01:51,372 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23700 is 0.0022654500975475287
+
+2019-08-27 18:01:51,593 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23720 is 0.0018730453980562347
+
+2019-08-27 18:01:51,819 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23740 is 0.0035112849171280713
+
+2019-08-27 18:01:52,049 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23760 is 0.001530099716918562
+
+2019-08-27 18:01:52,302 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23780 is 0.0015663609953679525
+
+2019-08-27 18:01:52,545 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23800 is 0.0033422715427365458
+
+2019-08-27 18:01:52,782 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23820 is 0.002439800944192328
+
+2019-08-27 18:01:53,011 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23840 is 9.57213598367801E-4
+
+2019-08-27 18:01:53,221 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23860 is 0.0024090070601355024
+
+2019-08-27 18:01:53,446 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23880 is 0.0013362306683972775
+
+2019-08-27 18:01:53,668 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23900 is 0.0030116047603665295
+
+2019-08-27 18:01:53,876 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23920 is 0.0021621571688263
+
+2019-08-27 18:01:54,091 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23940 is 0.0012764484189921915
+
+2019-08-27 18:01:54,299 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23960 is 0.004017502361776295
+
+2019-08-27 18:01:54,518 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 23980 is 0.0027666114530592325
+
+2019-08-27 18:01:54,737 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24000 is 0.0023263604078817084
+
+2019-08-27 18:01:54,952 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24020 is 0.0018359056787002487
+
+2019-08-27 18:01:55,160 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24040 is 0.0013002569801241776
+
+2019-08-27 18:01:55,380 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24060 is 0.002170519163947327
+
+2019-08-27 18:01:55,614 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24080 is 0.002059029080072392
+
+2019-08-27 18:01:55,820 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24100 is 0.0033704785031933764
+
+2019-08-27 18:01:56,037 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24120 is 0.0022256191661142706
+
+2019-08-27 18:01:56,251 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24140 is 0.002467098937084529
+
+2019-08-27 18:01:56,455 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24160 is 0.00116734661883022
+
+2019-08-27 18:01:56,684 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24180 is 0.001682358684443571
+
+2019-08-27 18:01:56,892 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24200 is 0.003026476620457086
+
+2019-08-27 18:01:57,102 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24220 is 0.0026588762149216934
+
+2019-08-27 18:02:21,869 - [INFO] - from org.datavec.image.recordreader.BaseImageRecordReader in main
+                
+ImageRecordReader: 4 label classes inferred using label generator ParentPathLabelGenerator
+
+2019-08-27 18:02:21,884 - [INFO] - from org.datavec.image.recordreader.BaseImageRecordReader in main
+                
+ImageRecordReader: 4 label classes inferred using label generator ParentPathLabelGenerator
+
+2019-08-27 18:02:21,931 - [INFO] - from org.nd4j.linalg.factory.Nd4jBackend in main
+                
+Loaded [CpuBackend] backend
+
+2019-08-27 18:02:22,850 - [INFO] - from org.nd4j.nativeblas.NativeOpsHolder in main
+                
+Number of threads used for NativeOps: 4
+
+2019-08-27 18:02:23,006 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2019-08-27 18:02:23,013 - [INFO] - from org.nd4j.linalg.api.ops.executioner.DefaultOpExecutioner in main
+                
+Backend used: [CPU]; OS: [Windows 10]
+
+2019-08-27 18:02:23,013 - [INFO] - from org.nd4j.linalg.api.ops.executioner.DefaultOpExecutioner in main
+                
+Cores: [8]; Memory: [2.2GB];
+
+2019-08-27 18:02:23,013 - [INFO] - from org.nd4j.linalg.api.ops.executioner.DefaultOpExecutioner in main
+                
+Blas vendor: [MKL]
+
+2019-08-27 18:02:23,630 - [INFO] - from org.deeplearning4j.nn.multilayer.MultiLayerNetwork in main
+                
+Starting MultiLayerNetwork with WorkspaceModes set to [training: ENABLED; inference: ENABLED], cacheMode set to [NONE]
+
+2019-08-27 18:02:24,958 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24240 is 0.0014130901212880075
+
+2019-08-27 18:02:25,227 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24260 is 0.0019919282892599996
+
+2019-08-27 18:02:25,476 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24280 is 0.0022498142052147754
+
+2019-08-27 18:02:25,734 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24300 is 0.002589483578901178
+
+2019-08-27 18:02:26,033 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24320 is 0.0017618567115835787
+
+2019-08-27 18:02:26,298 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24340 is 0.0023414353030098596
+
+2019-08-27 18:02:26,565 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24360 is 0.002338462897054944
+
+2019-08-27 18:02:26,838 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24380 is 0.0019204604715316463
+
+2019-08-27 18:02:27,103 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24400 is 0.002086396562316924
+
+2019-08-27 18:02:27,332 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24420 is 0.0030844501939718185
+
+2019-08-27 18:02:27,553 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24440 is 0.0017857250886658934
+
+2019-08-27 18:02:27,787 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24460 is 0.001740946316302896
+
+2019-08-27 18:02:28,069 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24480 is 0.001883428303594724
+
+2019-08-27 18:02:28,312 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24500 is 0.0017897736655878617
+
+2019-08-27 18:02:28,540 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24520 is 0.0019203803125334162
+
+2019-08-27 18:02:28,757 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24540 is 0.0015435874010768713
+
+2019-08-27 18:02:28,978 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24560 is 0.0017621060326056663
+
+2019-08-27 18:02:29,224 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24580 is 0.0013085679871183515
+
+2019-08-27 18:02:29,448 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24600 is 0.0025610015986038946
+
+2019-08-27 18:02:29,667 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24620 is 0.003903765806601237
+
+2019-08-27 18:02:29,891 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24640 is 0.0015204203642051482
+
+2019-08-27 18:02:30,117 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24660 is 0.003069270584934114
+
+2019-08-27 18:02:30,362 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24680 is 0.0020184726300002996
+
+2019-08-27 18:02:30,597 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24700 is 0.0035636510703042886
+
+2019-08-27 18:02:30,819 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24720 is 0.0011307419241886976
+
+2019-08-27 18:02:31,046 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24740 is 0.0016670355918771405
+
+2019-08-27 18:02:31,269 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24760 is 0.0018821072922470222
+
+2019-08-27 18:02:31,504 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24780 is 0.001777758768708651
+
+2019-08-27 18:02:31,726 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24800 is 0.002137225091791154
+
+2019-08-27 18:02:31,941 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24820 is 0.0024274221004706364
+
+2019-08-27 18:02:32,170 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24840 is 0.0011665420977238967
+
+2019-08-27 18:02:32,405 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24860 is 0.0013779884269415818
+
+2019-08-27 18:02:32,630 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24880 is 0.0013652737063299157
+
+2019-08-27 18:02:32,849 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24900 is 0.0039551824691819466
+
+2019-08-27 18:02:33,105 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24920 is 0.0020194220455421715
+
+2019-08-27 18:02:33,320 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24940 is 0.0014725295548757488
+
+2019-08-27 18:02:33,539 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24960 is 0.0024076308392410794
+
+2019-08-27 18:02:33,756 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 24980 is 0.0027094905456405347
+
+2019-08-27 18:02:33,977 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25000 is 0.0019639905189608327
+
+2019-08-27 18:02:34,195 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25020 is 0.002581401495986995
+
+2019-08-27 18:02:34,421 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25040 is 0.0020498764339722583
+
+2019-08-27 18:02:34,641 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25060 is 0.0027359582399565
+
+2019-08-27 18:02:34,865 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25080 is 0.0010387800272489273
+
+2019-08-27 18:02:35,081 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25100 is 0.0014864860555565797
+
+2019-08-27 18:02:35,297 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25120 is 0.0022093052603151617
+
+2019-08-27 18:02:35,541 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25140 is 0.0011024010241753018
+
+2019-08-27 18:02:35,771 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25160 is 0.001288460937109727
+
+2019-08-27 18:02:35,995 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25180 is 0.00226836558916788
+
+2019-08-27 18:02:36,217 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25200 is 0.004668145505450824
+
+2019-08-27 18:02:36,426 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25220 is 0.0011732788680612798
+
+2019-08-27 18:02:36,648 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25240 is 0.0030919299546660365
+
+2019-08-27 18:02:36,868 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25260 is 0.003063491866765574
+
+2019-08-27 18:02:37,079 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25280 is 9.735894382678254E-4
+
+2019-08-27 18:02:37,295 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25300 is 0.001665999118447701
+
+2019-08-27 18:02:37,513 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25320 is 0.0017445305860186323
+
+2019-08-27 18:02:37,767 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25340 is 0.002368098289666915
+
+2019-08-27 18:02:37,979 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25360 is 9.44507728478041E-4
+
+2019-08-27 18:02:38,196 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25380 is 0.0013665198449485218
+
+2019-08-27 18:02:38,410 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25400 is 0.002789326155056489
+
+2019-08-27 18:02:38,619 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25420 is 0.010778010490668436
+
+2019-08-27 18:02:38,844 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25440 is 0.0015858885752098586
+
+2019-08-27 18:02:39,067 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25460 is 0.0018454064915464216
+
+2019-08-27 18:02:39,294 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25480 is 0.0021188471437522194
+
+2019-08-27 18:02:39,509 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25500 is 0.002057118606575867
+
+2019-08-27 18:02:39,732 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25520 is 0.0022930073155171867
+
+2019-08-27 18:02:39,971 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25540 is 0.003697049335296654
+
+2019-08-27 18:02:40,189 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25560 is 0.0018363190992074835
+
+2019-08-27 18:02:40,423 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25580 is 0.0019467856455917315
+
+2019-08-27 18:02:40,651 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25600 is 0.0028086933741848555
+
+2019-08-27 18:02:40,867 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25620 is 0.0014159541310351785
+
+2019-08-27 18:02:41,083 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25640 is 0.001901123611049414
+
+2019-08-27 18:02:41,302 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25660 is 0.0019492514039706778
+
+2019-08-27 18:02:41,516 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25680 is 0.003811558848178336
+
+2019-08-27 18:02:41,732 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25700 is 0.0018622748159619305
+
+2019-08-27 18:02:41,950 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25720 is 0.0019083927650621832
+
+2019-08-27 18:02:42,157 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25740 is 0.0020159408644050613
+
+2019-08-27 18:02:42,369 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25760 is 0.002722531459198493
+
+2019-08-27 18:02:42,588 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25780 is 0.0023142169632428987
+
+2019-08-27 18:02:42,801 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25800 is 0.0018698694564794351
+
+2019-08-27 18:02:43,015 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25820 is 0.001766236710693456
+
+2019-08-27 18:02:43,233 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25840 is 0.0017918020148060634
+
+2019-08-27 18:02:43,456 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25860 is 0.0018705690923894564
+
+2019-08-27 18:02:43,678 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25880 is 0.0010877906611911213
+
+2019-08-27 18:02:43,889 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25900 is 0.002206685986551136
+
+2019-08-27 18:02:44,100 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25920 is 0.002810353756326168
+
+2019-08-27 18:02:44,318 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25940 is 0.002174227752663083
+
+2019-08-27 18:02:44,530 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25960 is 0.002074801231000913
+
+2019-08-27 18:02:44,739 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 25980 is 0.0023361835162942156
+
+2019-08-27 18:02:44,963 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26000 is 0.0028323727459589262
+
+2019-08-27 18:02:45,174 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26020 is 0.003567137292192834
+
+2019-08-27 18:02:45,387 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26040 is 0.0026024267266471527
+
+2019-08-27 18:02:45,607 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26060 is 0.003225004822679375
+
+2019-08-27 18:02:45,833 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26080 is 0.0012293297903996176
+
+2019-08-27 18:02:46,065 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26100 is 0.0027530073434563346
+
+2019-08-27 18:02:46,317 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26120 is 0.0022915450944587974
+
+2019-08-27 18:02:46,561 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26140 is 0.00162253822000404
+
+2019-08-27 18:02:46,801 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26160 is 0.0012080466905940994
+
+2019-08-27 18:02:47,061 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26180 is 0.0019361948307770604
+
+2019-08-27 18:02:47,302 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26200 is 0.002168669691339815
+
+2019-08-27 18:02:47,559 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26220 is 0.0029508471069803876
+
+2019-08-27 18:02:47,807 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26240 is 0.0018213694903980722
+
+2019-08-27 18:02:48,057 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26260 is 0.004449173822706965
+
+2019-08-27 18:02:48,289 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26280 is 0.0020982597605657617
+
+2019-08-27 18:02:48,508 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26300 is 0.0019893212571861626
+
+2019-08-27 18:02:48,723 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26320 is 0.0012112623376857442
+
+2019-08-27 18:02:48,970 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26340 is 0.0017078871179263756
+
+2019-08-27 18:02:49,186 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26360 is 0.003122759937757223
+
+2019-08-27 18:02:49,398 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26380 is 0.002344828921059448
+
+2019-08-27 18:02:49,617 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26400 is 0.001042319860102549
+
+2019-08-27 18:02:49,829 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26420 is 0.0021045716595680147
+
+2019-08-27 18:02:50,040 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26440 is 0.0029578660533629234
+
+2019-08-27 18:02:50,260 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26460 is 0.0010991736321605714
+
+2019-08-27 18:02:50,470 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26480 is 0.0020882789777726543
+
+2019-08-27 18:02:50,678 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26500 is 0.0017862167677757867
+
+2019-08-27 18:02:50,895 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26520 is 0.003051329174944354
+
+2019-08-27 18:02:51,106 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26540 is 0.003953957868268219
+
+2019-08-27 18:02:51,318 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26560 is 0.0012141457930358256
+
+2019-08-27 18:02:51,553 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26580 is 0.00471540326293887
+
+2019-08-27 18:02:51,776 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26600 is 0.0010997673953788223
+
+2019-08-27 18:02:52,008 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26620 is 0.0023202219546081156
+
+2019-08-27 18:02:52,237 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26640 is 0.002526495560066863
+
+2019-08-27 18:02:52,471 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26660 is 0.00974006850844418
+
+2019-08-27 18:02:52,701 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26680 is 0.002817738909445467
+
+2019-08-27 18:02:52,909 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26700 is 0.002431972065978826
+
+2019-08-27 18:02:53,124 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26720 is 0.0015800747664385711
+
+2019-08-27 18:02:53,341 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26740 is 0.0024172412830689893
+
+2019-08-27 18:02:53,557 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26760 is 0.0018576569934269998
+
+2019-08-27 18:02:53,766 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26780 is 0.001278295663296663
+
+2019-08-27 18:02:53,986 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26800 is 0.003085095927884015
+
+2019-08-27 18:02:54,200 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26820 is 0.0013014155506752615
+
+2019-08-27 18:02:54,408 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26840 is 0.00381278200813164
+
+2019-08-27 18:02:54,631 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26860 is 0.0014137881724229288
+
+2019-08-27 18:02:54,842 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26880 is 0.0015707427086750073
+
+2019-08-27 18:02:55,055 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26900 is 0.0015809636061221597
+
+2019-08-27 18:02:55,284 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26920 is 0.001692756334982633
+
+2019-08-27 18:02:55,491 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26940 is 0.0010164025265086139
+
+2019-08-27 18:02:55,702 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26960 is 0.003156984405514609
+
+2019-08-27 18:02:55,928 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 26980 is 0.002217599168794624
+
+2019-08-27 18:02:56,143 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 27000 is 0.002767142048943484
+
+2019-08-27 18:02:56,359 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 27020 is 0.0020243147160082173
+
+2019-08-27 18:02:56,570 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 27040 is 0.003853419549561605
+
+2019-08-27 18:02:56,783 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 27060 is 0.0023310102813615488
+
