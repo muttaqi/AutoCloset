@@ -1,0 +1,3 @@
+Here, the clothing images acquired via the ImageDownloader and ImagePreparer is located and organized.
+
+The clothing folder can be found at: https://drive.google.com/open?id=1hlnmDABiqKrLDwAikhjjkuSUa3Tc76JO
