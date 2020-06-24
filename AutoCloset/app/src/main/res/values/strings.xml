@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AutoCloset</string>
+    <string name="tv_name_text">Name: </string>
+    <string name="tv_type_text">Clothing Type: </string>
+
+    <string-array name="types_array">
+        <item>Hat</item>
+        <item>Top</item>
+        <item>Bottom</item>
+        <item>Shoes</item>
+    </string-array>
+
+    <string name="hats">Hats</string>
+    <string name="tops">Tops</string>
+    <string name="bottoms">Bottoms</string>
+    <string name="shoes">Shoes</string>
+
+    <item name="clothingID" type="id"/>
+</resources>

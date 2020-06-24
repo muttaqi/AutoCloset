@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="MainFragment">
+
+    <TextView
+        android:id="@+id/tv_hats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/HeaderStyle"
+
+        android:paddingStart="5dp"
+        android:text="@string/hats"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rv_hats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingStart="5dp"
+        android:paddingLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_hats_null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+
+        android:paddingStart="5dp"
+        android:text="no hats found"
+        />
+
+    <TextView
+        android:id="@+id/tv_tops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/HeaderStyle"
+
+        android:paddingStart="5dp"
+        android:text="@string/tops"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rv_tops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingStart="5dp"
+        android:paddingLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_tops_null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+
+        android:paddingStart="5dp"
+        android:text="no tops found"
+        />
+
+    <TextView
+        android:id="@+id/tv_bottoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/HeaderStyle"
+
+        android:paddingStart="5dp"
+        android:text="@string/bottoms"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rv_bottoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingStart="5dp"
+        android:paddingLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_bottoms_null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+
+        android:paddingStart="5dp"
+        android:text="no bottoms found"
+        />
+
+    <TextView
+        android:id="@+id/tv_shoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/HeaderStyle"
+
+        android:paddingStart="5dp"
+        android:text="@string/shoes"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rv_shoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingStart="5dp"
+        android:paddingLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_shoes_null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+
+        android:paddingStart="5dp"
+        android:text="no shoes found"
+        />
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "686197521525",
+    "firebase_url": "https://autocloset-102d7.firebaseio.com",
+    "project_id": "autocloset-102d7",
+    "storage_bucket": "autocloset-102d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686197521525:android:3748fb9749ba88dbbb0c3c",
+        "android_client_info": {
+          "package_name": "com.autocloset.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686197521525-ftjei4icnju4t6g33gs81pg0qqslljk3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtiGEgxLrWLCVkh8lsl1v-NJqFzt2Wmmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686197521525-ftjei4icnju4t6g33gs81pg0qqslljk3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
