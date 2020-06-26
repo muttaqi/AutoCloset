@@ -12,6 +12,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
+
 public class Main {
 
     public static int m;
@@ -37,9 +42,11 @@ public class Main {
                         if (image.getWidth() == 100 && image.getHeight() == 100) {
                             //cropImage(image);
 
-                            monoChromeImage(image);
+                            /*monoChromeImage(image);
 
-                            blackWhiteImage(image);
+                            blackWhiteImage(image);*/
+
+                            image = detectClothing(image);
 
                             ImageIO.write(image, "jpg", new File(path));
                         }
@@ -260,4 +267,64 @@ public class Main {
 
         return searched;
     }
+
+    public BufferedImage detectClothing(BufferedImage bi) {
+
+        Mat mat = new Mat(bi.getHeight(), bi.getWidth(), CvType.CV_8UC3);
+        byte[] pixels = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
+
+        mat.put(0, 0, pixels);
+
+        Mat blurredMat = new Mat();
+        Mat hsvMat = new Mat();
+        Mat mask = new Mat();
+        Mat morphOutput = new Mat();
+
+        Imgproc.blur(mat, blurredMat, new Size(7, 7));
+        Imgproc.cvtColor(blurredMat, hsvMat, Imgproc.COLOR_BGR2HSV);
+
+        Core.inRange(hsvMat, new Scalar(50, 60, 50), new Scalar(130, 180, 255), mask);
+
+        Mat dilateElement = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(24, 24));
+        Mat erodeElement = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(12, 12));
+
+        Imgproc.erode(mask, morphOutput, erodeElement);
+        Imgproc.erode(mask, morphOutput, erodeElement);
+        
+        Imgproc.dilate(mask, morphOutput, dilateElement);
+        Imgproc.dilate(mask, morphOutput, dilateElement);
+
+        return matToBufferedImage(morphOutput);
+    }
+    
+	/**
+	 * Support for the {@link mat2image()} method
+	 * 
+	 * @param original
+	 *            the {@link Mat} object in BGR or grayscale
+	 * @return the corresponding {@link BufferedImage}
+     * taken from https://github.com/opencv-java/object-detection/blob/master/src/it/polito/elite/teaching/cv/utils/Utils.java
+     * credits to Luigi De Russis: github.com/luigidr
+	 */
+	private static BufferedImage matToBufferedImage(Mat original)
+	{
+		// init
+		BufferedImage image = null;
+		int width = original.width(), height = original.height(), channels = original.channels();
+		byte[] sourcePixels = new byte[width * height * channels];
+		original.get(0, 0, sourcePixels);
+		
+		if (original.channels() > 1)
+		{
+			image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+		}
+		else
+		{
+			image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+		}
+		final byte[] targetPixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
+		System.arraycopy(sourcePixels, 0, targetPixels, 0, sourcePixels.length);
+		
+		return image;
+	}
 }
