@@ -1,5 +1,6 @@
 ## Test Results
 
+-------- | -------
 Accuracy | 0.9091
 Precision | 0.9095
 Recall | 0.9009
