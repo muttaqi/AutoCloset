@@ -96,7 +96,6 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
             System.getProperty("user.home"), ".credentials/drive-java-quickstart");
 
-
     private static final int REQUEST_CODE_SIGN_IN = 0;
     private static final int REQUEST_CODE_OPEN_ITEM = 1;
     private static final int REQUEST_WRITE_STORAGE = 112;
@@ -132,8 +131,7 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
     protected void onCreate(Bundle savedInstanceState) {
         TAG = this.getClass().getSimpleName();
 
-        Log.d(TAG, "DEBUG MA 173");
-
+        // get user id
         try {
             mDocRef = FirebaseFirestore.getInstance().document("autocloset/num_users");
         } catch (Exception e) {
@@ -149,59 +147,42 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
                 null,
                 null);
 
+        
+        // get id locally
         if (userCursor.moveToFirst() && userCursor != null) {
-
             userID = userCursor.getLong(userCursor.getColumnIndex(UserContract.UserEntry.USER_ID));
-            Log.d(TAG, "DEBUG MA 192 " + userID);
         }
 
+        // else get from firebase
         else {
-
             mDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                if (task.isSuccessful() && task.getResult().exists()) {
+                    if (task.isSuccessful() && task.getResult().exists()) {
 
-                    userID = task.getResult().getLong("value");
+                        userID = task.getResult().getLong("value");
 
-                    ContentValues cv = new ContentValues();
-                    cv.put(UserContract.UserEntry.USER_ID, userID);
-                    mUserDb.insert(UserContract.UserEntry.TABLE_NAME,
-                            null,
-                            cv);
+                        // cache id locally
+                        ContentValues cv = new ContentValues();
+                        cv.put(UserContract.UserEntry.USER_ID, userID);
+                        mUserDb.insert(UserContract.UserEntry.TABLE_NAME,
+                                null,
+                                cv);
 
-                    Map<String, Object> data = new HashMap<>();
-                    data.put("value", userID + 1);
-                    mDocRef.set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-
-                             if (task.isSuccessful()) {
-
-                                Log.d(TAG, "DEBUG MA 212");
+                        Map<String, Object> data = new HashMap<>();
+                        data.put("value", userID + 1);
+                        mDocRef.set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
                             }
-
-                            else {
-
-                                Log.d(TAG, "DEBUG MA 217");
-                            }
-                        }
-                    });
-                }
-
-                else {
-
-                    Log.d(TAG, "DEBUG MA 198 " + task.getException());
-                    Log.d(TAG, "DEBUG MA 198 " + task.getResult().exists());
-                }
+                        });
+                    }
                 }
             });
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            Log.d(TAG, "DEBUG MA 40 ");
             createPermissions(this, this);
         }
 
@@ -228,18 +209,10 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
             mPager.setAdapter(pagerAdapter);
         }
 
-        /*try {
-            final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-            Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                    .setApplicationName(APPLICATION_NAME)
-                    .build();
-        } catch (IOException e) {Log.d(TAG, "DEBUG CF 119 " + e);}
-        catch (GeneralSecurityException gse) {Log.d(TAG, "DEBUG CF 119 " + gse);}*/
-
         context = getApplicationContext();
 
+        // download model from google drive
         try {
-
             DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
             HTTP_TRANSPORT = new NetHttpTransport();
 
@@ -256,25 +229,11 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
             fos.write(outputStream.toByteArray());
             fos.close();
 
-            Log.d(TAG, "DEBUG 351 MA file written");
-
         } catch (IOException e) {Log.d(TAG, "DEBUG MA 301 " + e);}
-
-        /*initialize();
-        requestPermission();
-        signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-
-        if (signInAccount != null && signInAccount.getGrantedScopes().containsAll(requiredScopes)) {
-            initializeDriveClient(signInAccount);
-            onDriveClientReady();
-        } else {
-            signIn();
-        }*/
     }
 
     @Override
     public void onBackPressed() {
-
         super.onBackPressed();
     }
 
@@ -283,6 +242,7 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
 
     }
 
+    // handle sliding fragments (main fragment and camera fragment)
     private boolean change = false;
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager supportFragmentManager) {
@@ -294,11 +254,7 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
         public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             super.setPrimaryItem(container, position, object);
 
-            Log.d(TAG, "DEBUG MA 340 ");
             if (position == 0) {
-
-                Log.d(TAG, "DEBUG MA 343 ");
-
                 if (change && ((MainFragment) object).adaptersReady()) {
                     ((MainFragment) object).refreshAdapters();
 
@@ -307,7 +263,6 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
             }
 
             else {
-
                 change = true;
             }
         }
@@ -316,7 +271,6 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
         public Fragment getItem(int i) {
 
             if (i == 1) {
-
                 CameraFragment fragCam = new CameraFragment();
 
                 return fragCam;
@@ -346,35 +300,15 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
         }
     }
 
-
+    // google drive api helpers
     public void createPermissions(Context c, Activity a){
         String permission = Manifest.permission.READ_SMS;
         if (ContextCompat.checkSelfPermission(c, permission) != PackageManager.PERMISSION_GRANTED){
-            Log.d(TAG, "DEBUG MA 118");
             if(!ActivityCompat.shouldShowRequestPermissionRationale(a, permission)){
-                Log.d(TAG, "DEBUG MA 120");
                 requestPermissions(new String[]{permission}, 0);
             }
         }
     }
-
-    /*private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
-        // Load client secrets.
-        InputStream in = CameraFragment.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
-        if (in == null) {
-            throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
-        }
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
-
-        // Build flow and trigger user authorization request.
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-                HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
-                .setAccessType("offline")
-                .build();
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
-        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
-    }*/
 
     private void requestPermission() {
         String dirPath = getFilesDir().getAbsolutePath() + File.separator + "PDF";
@@ -446,8 +380,6 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnFra
 
             fos.write(outputStream.toByteArray());
             fos.close();
-
-            Log.d(TAG, "DEBUG 351 MA file written");
 
         } catch (IOException e) {Log.d(TAG, "DEBUG MA 301 " + e);}
 

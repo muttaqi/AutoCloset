@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -23,57 +24,53 @@ public class Main {
 
     public static void main(String[] args) {
 
-        for (int k = 0; k < 4; k ++) {
+        Random rand = new Random();
+        String[] folders = {"hats", "tops", "bottoms", "shoes"};
+        int i = 0;
+        for (String folder : folders) {
 
-            String myDirectoryPath = "C:\\Users\\Home-PC_2\\dl4j-examples - Copy\\dl4j-examples\\src\\main\\resources\\clothes\\train-data\\" + k + " - Copy";
+            String myDirectoryPath = "../clothing/" + folder;
 
             File dir = new File(myDirectoryPath);
             File[] directoryListing = dir.listFiles();
             if (directoryListing != null) {
+                // loop through files in the folder
                 for (File child : directoryListing) {
-
-                    System.out.println("Name: " + child.getName());
-
                     try {
-
                         BufferedImage image = ImageIO.read(child);
-                        String path = child.getPath();
+                        String fileName = child.getName();
 
-                        if (image.getWidth() == 100 && image.getHeight() == 100) {
-                            //cropImage(image);
+                        // prepare image and write it to the same file
+                        cropImage(image);
+                        monoChromeImage(image);
+                        blackWhiteImage(image);
 
-                            /*monoChromeImage(image);
-
-                            blackWhiteImage(image);*/
-
-                            image = detectClothing(image);
-
-                            ImageIO.write(image, "jpg", new File(path));
-                        }
+                        // 20-80 split for test data to train data
+                        int r = rand.nextInt(10);
+                        ImageIO.write(image, "jpg", new File("../clothing/" + (r < 2 ? "test-data" : "train-data") + "/" + i + "/" + fileName));
 
                     } catch (IOException e) {
                         System.out.println("Error: " + e);
                     }
                 }
             }
+            i += 1;
         }
     }
 
+    // given an image crop it
     public static void cropImage(BufferedImage image) {
 
         int x = image.getWidth();
         int y = image.getHeight();
         double ratio;
 
+        // maintain ratio and set smaller dimension to 100
         if (x < y) {
-
-            System.out.println("x: " + x);
             ratio = 100.0 / x;
             x = 100;
             y = (int) (ratio * ((double) y));
         } else {
-
-            System.out.println("y: " + y);
             ratio = 100.0 / y;
             y = 100;
             x = (int) (ratio * ((double) x));
@@ -86,30 +83,26 @@ public class Main {
         g.drawImage(image, 0, 0, x, y, null);
         g.dispose();
 
+        // crop smaller dimension to 100, centered
         if (x != 100) {
-
             int dif;
             if ((dif = x - 100) > 0) {
-
                 newImage = newImage.getSubimage(dif / 2, 0, 100, 100);
             }
         } else {
-
             int dif;
             if ((dif = y - 100) > 0) {
-
                 newImage = newImage.getSubimage(0, dif / 2, 100, 100);
             }
         }
     }
 
+    // make a buffered image grayscale and the foreground lighter than the background
     public static void monoChromeImage(BufferedImage image) {
 
+        // grayscale
         for (int i = 0; i < 100; i++) {
-
             for (int j = 0; j < 100; j++) {
-
-                //System.out.println("coords: " + i + " " + j);
                 Color c = new Color(image.getRGB(j, i));
                 int red = (int) (c.getRed() * 0.299);
                 int green = (int) (c.getGreen() * 0.587);
@@ -126,29 +119,26 @@ public class Main {
         int b = 0;
         int w = 0;
 
+        // count # of dark and light pixels on the border of the image
         for (int i = 0; i < 100; i ++) {
 
             Color c = new Color(image.getRGB(i, 0));
 
             if (c.getRed() <= 80) {
-
                 b++;
             }
 
             else if (c.getRed() >= 175) {
-
                 w++;
             }
 
             c = new Color(image.getRGB(i, 99));
 
             if (c.getRed() <= 80) {
-
                 b++;
             }
 
             else if (c.getRed() >= 175) {
-
                 w++;
             }
         }
@@ -158,32 +148,27 @@ public class Main {
             Color c = new Color(image.getRGB(0, i));
 
             if (c.getRed() <= 80) {
-
                 b++;
             }
 
             else if (c.getRed() >= 175) {
-
                 w++;
             }
 
             c = new Color(image.getRGB(99, i));
 
             if (c.getRed() <= 80) {
-
                 b++;
             }
 
             else if (c.getRed() >= 175) {
-
                 w++;
             }
         }
 
+        // flip dark and light pixels if there are more light pixels
         if (b < w) {
-
             for (int i = 0; i < 100; i++) {
-
                 for (int j = 0; j < 100; j++) {
 
                     Color c = new Color(image.getRGB(j, i));
@@ -198,34 +183,31 @@ public class Main {
         }
     }
 
+    // make a buffered image black and white
     public static void blackWhiteImage(BufferedImage image) {
 
+        // BFS algorithm to convert dark pixels to black
         boolean[][] searched = new boolean[100][100];
 
         m = 0;
         blackWhiteBFS(image, searched, 0, 0);
         blackWhiteBFSReverse(image, searched, 99, 99);
 
+        // convert remaining pixels to white
         for (int k = 0; k < 100; k++) {
-
             for (int l = 0; l < 100; l ++) {
-
                 Color c = new Color(image.getRGB(k, l));
-
                 if (c.getBlue() + c.getGreen() + c.getRed() > 50) {
 
                     image.setRGB(k, l, new Color(255,255,255).getRGB());
                 }
             }
         }
-
-        System.out.println("DEBUG 212 " + m);
     }
 
+    // BFS from top-left
     public static boolean[][] blackWhiteBFS(BufferedImage image, boolean[][] searched, int i, int j) {
-
         if (i < 100 && j < 100 && !searched[i][j]) {
-
             searched[i][j] = true;
 
             Color c = new Color(image.getRGB(i, j));
@@ -245,6 +227,7 @@ public class Main {
         return searched;
     }
 
+    // BFS from bottom-right
     public static boolean[][] blackWhiteBFSReverse(BufferedImage image, boolean[][] searched, int i, int j) {
 
         if (i >= 0 && j >= 0 && !searched[i][j]) {
@@ -267,64 +250,4 @@ public class Main {
 
         return searched;
     }
-
-    public BufferedImage detectClothing(BufferedImage bi) {
-
-        Mat mat = new Mat(bi.getHeight(), bi.getWidth(), CvType.CV_8UC3);
-        byte[] pixels = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
-
-        mat.put(0, 0, pixels);
-
-        Mat blurredMat = new Mat();
-        Mat hsvMat = new Mat();
-        Mat mask = new Mat();
-        Mat morphOutput = new Mat();
-
-        Imgproc.blur(mat, blurredMat, new Size(7, 7));
-        Imgproc.cvtColor(blurredMat, hsvMat, Imgproc.COLOR_BGR2HSV);
-
-        Core.inRange(hsvMat, new Scalar(50, 60, 50), new Scalar(130, 180, 255), mask);
-
-        Mat dilateElement = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(24, 24));
-        Mat erodeElement = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(12, 12));
-
-        Imgproc.erode(mask, morphOutput, erodeElement);
-        Imgproc.erode(mask, morphOutput, erodeElement);
-        
-        Imgproc.dilate(mask, morphOutput, dilateElement);
-        Imgproc.dilate(mask, morphOutput, dilateElement);
-
-        return matToBufferedImage(morphOutput);
-    }
-    
-	/**
-	 * Support for the {@link mat2image()} method
-	 * 
-	 * @param original
-	 *            the {@link Mat} object in BGR or grayscale
-	 * @return the corresponding {@link BufferedImage}
-     * taken from https://github.com/opencv-java/object-detection/blob/master/src/it/polito/elite/teaching/cv/utils/Utils.java
-     * credits to Luigi De Russis: github.com/luigidr
-	 */
-	private static BufferedImage matToBufferedImage(Mat original)
-	{
-		// init
-		BufferedImage image = null;
-		int width = original.width(), height = original.height(), channels = original.channels();
-		byte[] sourcePixels = new byte[width * height * channels];
-		original.get(0, 0, sourcePixels);
-		
-		if (original.channels() > 1)
-		{
-			image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-		}
-		else
-		{
-			image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
-		}
-		final byte[] targetPixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
-		System.arraycopy(sourcePixels, 0, targetPixels, 0, sourcePixels.length);
-		
-		return image;
-	}
 }

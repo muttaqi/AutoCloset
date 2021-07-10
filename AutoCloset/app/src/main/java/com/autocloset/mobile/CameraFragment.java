@@ -68,17 +68,6 @@ import static android.content.ContentValues.TAG;
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
 
 public class CameraFragment extends Fragment {
-
-    /*private static final String APPLICATION_NAME = "Google Drive API Java Quickstart";
-    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static final String TOKENS_DIRECTORY_PATH = "tokens";
-
-    *
-     * Global instance of the scopes required by this quickstart.
-     * If modifying these scopes, delete your previously saved tokens/ folder.
-
-    private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_METADATA_READONLY);
-    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";*/
     
     static Camera mCamera = null;
     private CameraPreview mPreview;
@@ -108,8 +97,6 @@ public class CameraFragment extends Fragment {
 
         mStorageRef = FirebaseStorage.getInstance().getReference("images/" + ((MainActivity) this.getActivity()).userID);
 
-        Log.d(TAG, "DEBUG CF 141");
-
         if (getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
             // this device has a camera
             deviceHasCameraHardware = true;
@@ -130,8 +117,8 @@ public class CameraFragment extends Fragment {
             Log.d(TAG, "CF 289 File not found! " + locationToSave);
         }
 
+        // load in the saved model
         try {
-
             model = ModelSerializer.restoreMultiLayerNetwork(context.getAssets().open("trained_clothing_model.zip"));
         }
         catch (Exception e) {Log.d(TAG, "DEBUG CF 97 " + e);}
@@ -162,6 +149,7 @@ public class CameraFragment extends Fragment {
                 width = size.x;
                 height = size.y;
 
+                // use transparent dark boxes to darken areas of the preview that won't be used in evaluation
                 View topBox = getView().findViewById(R.id.rectangle_at_the_top);
                 View bottomBox = getView().findViewById(R.id.rectangle_at_the_bottom);
                 ImageView cameraBox = getView().findViewById(R.id.camera_box);
@@ -187,15 +175,13 @@ public class CameraFragment extends Fragment {
                 cameraBox.setX(0);
                 cameraBox.setY((height - width)/2);
 
-                Log.d(TAG, "DEBUG CF 117 t: " + topBox.getMinimumHeight());
-                Log.d(TAG, "DEBUG CF 118 b: " + bottomBox.getMinimumHeight());
-
+                // display the capture button
                 captureButton = (CircleButton) this.getActivity().findViewById(R.id.button_capture);
                 captureButton.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                // get an image from the camera
+                                // on click, get an image from the camera
                                 mCamera.takePicture(null, null, mPicture);
                             }
                         }
@@ -225,27 +211,13 @@ public class CameraFragment extends Fragment {
             width = mPreview.getSize().width;
             height = mPreview.getSize().height;
 
-            /*image = new Mat();
-            image.put(0, 0, data);
-
-            Point center = new Point(width/2, height/2);
-            rotation_matrix = Imgproc.getRotationMatrix2D(center, 90.0, 1.0);
-
-            rotatedImage = new Mat();
-            Imgproc.warpAffine(image, rotatedImage, rotation_matrix, image.size());
-            //IplImage iplFrame = new IplImage(rotatedImage);
-
-            int size = (int) (rotatedImage.total() * rotatedImage.channels());
-            byte[] newData = new byte[size];
-            rotatedImage.get(0, 0, newData);
-
-            //Rect size = new Rect(width, height,)*/
-
             Matrix matrix = new Matrix();
             matrix.postRotate(90);
 
+            // get the picture as a bitmap
             Bitmap image = BitmapFactory.decodeByteArray(data, 0, data.length);
 
+            // crop image to square
             int newWidth, newHeight;
             double ratio = (double) width/height;
 
@@ -260,16 +232,15 @@ public class CameraFragment extends Fragment {
                 newWidth = image.getWidth();
             }
 
-            Log.d(TAG, "CF 196 new width: " + newWidth +
-                    "\nnew height: " + newHeight);
-
             int startX = (image.getWidth() - newWidth) / 2;
             int startY = (image.getHeight() - newHeight) / 2;
 
+            // rotate by 90 degrees
             Bitmap rotatedImage = Bitmap.createBitmap(image, startX, startY, newWidth, newHeight, matrix, true);
-
+            
             Bitmap croppedImage = rotatedImage;
 
+            // write new image locally
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             rotatedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte[] newData = baos.toByteArray();
@@ -291,9 +262,9 @@ public class CameraFragment extends Fragment {
                 Log.d(TAG, "CF 122 Error accessing file: " + e.getMessage());
             }
 
-            Log.d(TAG, "DEBUG CF 131 good");
             mCamera.startPreview();
 
+            // crop our image
             rotatedImage = Useful.cropImage(rotatedImage);
 
             croppedImage = Useful.cropImage(rotatedImage);
@@ -323,70 +294,34 @@ public class CameraFragment extends Fragment {
                 Log.d(TAG, "CF 122 Error accessing file: " + e.getMessage());
             }
 
-            /*Log.d(TAG, "CF 309 " + newData.length);
-            int[] modelNewData = new int[10000];
-
-            for (int i = 0; i < 10000; i ++) {
-
-                modelNewData[i] = rotatedImage.getPixel((i - (i % 100)) / 100, i % 100);
-            }
-
-            int[][] modelNewData = new int[100][100];
-
-            for (int i = 0; i < 100; i ++) {
-
-                for (int j = 0; j < 100; j ++) {
-
-                    modelNewData[i][j] = rotatedImage.getPixel(i, j);
-                }
-            }*/
-
             try {
-
+                // evaluate the new image
                 FileSplit analyze = new FileSplit(picDir, NativeImageLoader.ALLOWED_FORMATS);
 
                 ParentPathLabelGenerator analyzeLabelMaker = new ParentPathLabelGenerator();
 
                 ImageRecordReader analyzeRecordReader = new ImageRecordReader(100, 100, 1, analyzeLabelMaker);
 
-                //List<String> labels = Arrays.asList(new String[]{"0", "1", "2", "3"});
 
                 analyzeRecordReader.initialize(analyze);
-                //analyzeRecordReader.setLabels(labels);
 
-                //DataSetIterator analyzeDataIter = new RecordReaderDataSetIterator(analyzeRecordReader, 1);
                 DataSetIterator analyzeDataIter = new RecordReaderDataSetIterator(analyzeRecordReader, 1, 1, 4);
                 DataNormalization analyzeScaler = new ImagePreProcessingScaler(0, 1);
 
                 analyzeScaler.fit(analyzeDataIter);
                 analyzeDataIter.setPreProcessor(analyzeScaler);
 
-                if (model.getLabels() == null) {
-
-                    Log.d(TAG, "DEBUG CF 356");
-                }
-
-                Log.d(TAG, "DEBUG CF 365");
                 model.getLabels();
 
-                Log.d(TAG, "DEBUG CF 368");
                 // Create Eval object with 4 possible classes
                 org.deeplearning4j.eval.Evaluation eval = new org.deeplearning4j.eval.Evaluation(4);
-
-                Log.d(TAG, "DEBUG CF 372");
-
-                if (!analyzeDataIter.hasNext()) {
-
-                    Log.d(TAG, "DEBUG CF 376");
-                }
-
-                Log.d(TAG, "DEBUG CF 379");
 
                 INDArray analyseInputs = Nd4j.zeros(1, 10000);
                 INDArray analyseOutputs = Nd4j.zeros(1, 4);
 
                 rotatedImage.setConfig(Bitmap.Config.ARGB_8888);
 
+                // input grayscale version of the image
                 for (int i = 0; i < 10000; i ++) {
 
                     int p = rotatedImage.getPixel((i - (i % 100)) / 100, i % 100);
@@ -395,106 +330,63 @@ public class CameraFragment extends Fragment {
                     int g = (short) ((p >> 8) & 0xFF);
                     int b = (short) (p & 0xFF);
 
-                    //Log.d(TAG, "DEBUG CF 395 " + (r + g + b));
-
                     analyseInputs.putScalar(new int[]{0, i}, r + g + b);
                 }
 
-                //DataSet next = analyzeDataIter.next();
                 DataSet next = new DataSet(analyseInputs, analyseOutputs);
 
-                if (next.getLabels() == null) {
-
-                    Log.d(TAG, "DEBUG CF 361");
-                }
-
-                Log.d(TAG, "DEBUG CF 329");
                 INDArray output = model.output(next.getFeatures());
 
-                Log.d(TAG, "DEBUG CF 332");
                 eval.eval(next.getLabels(), output);
 
+                // output evaluation stats
                 Log.d(TAG, "DEBUG CF 309 " + eval.stats());
 
-                /*if (eval.getConfusionMatrix().getPredictedTotal(0) == 1) {
-
-                    Toast.makeText(context, "This is a cap", Toast.LENGTH_LONG).show();
-                }
-
-                else if (eval.getConfusionMatrix().getPredictedTotal(1) == 1) {
-
-                    Toast.makeText(context, "These are pants", Toast.LENGTH_LONG).show();
-                }
-
-                else if (eval.getConfusionMatrix().getPredictedTotal(2) == 1) {
-
-                    Toast.makeText(context, "This is a shirt", Toast.LENGTH_LONG).show();
-                }
-
-                else {
-
-                    Toast.makeText(context, "These are shoes", Toast.LENGTH_LONG).show();
-                }*/
-
-                Log.d(TAG, "DEBUG CF 448 ");
-
+                // match model output to XML spinner enumeration
                 int evaluation;
                 if (eval.getConfusionMatrix().getPredictedTotal(0) == 1) {
-
                     evaluation = 0;
-                    //cap
+                    // hats
                 }
 
                 else if (eval.getConfusionMatrix().getPredictedTotal(1) == 1) {
 
                     evaluation = 2;
-                    //pants
+                    // bottoms
                 }
 
                 else if (eval.getConfusionMatrix().getPredictedTotal(2) == 1) {
 
                     evaluation = 1;
-                    //shirt
+                    // tops
                 }
 
                 else {
 
                     evaluation = 3;
-                    //shoes
+                    // shoes
                 }
 
-                Log.d(TAG, "DEBUG CF 475");
-
-                Log.d(TAG, "DEBUG MA 450");
-
-                //Display clothing type selector
+                //display clothing type selector with the evaluation
                 displayClothingDetails(croppedImage, evaluation, "");
             } catch (Exception e) {Log.d(TAG, "DEBUG CF 294 " + e);}
         }
     };
 
     private static File getOutputMediaFile(int type){
-        // To be safe, you should check that the SDCard is mounted
-        // using Environment.getExternalStorageState() before doing this.
 
         File mediaStorageDir = new File(context.getExternalFilesDir(
                 Environment.DIRECTORY_PICTURES), "AutoCloset");
-        // This location works best if you want the created images to be shared
-        // between applications and persist after your app has been uninstalled.
 
-        // Create the storage directory if it does not exist
+        // create the storage directory if it does not exist
         if (! mediaStorageDir.exists()){
             if (! mediaStorageDir.mkdirs()){
                 Log.d("AutoCloset", "CF 139 failed to create directory");
                 return null;
             }
         }
-        else {
 
-            Log.d(TAG, "DEBUG CF 151 good " + mediaStorageDir.getAbsolutePath());
-        }
-
-        // Create a media file name
+        // create a media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
@@ -507,6 +399,7 @@ public class CameraFragment extends Fragment {
         return mediaFile;
     }
 
+    // display the image, spinner and the image name input text
     public void displayClothingDetails(final Bitmap croppedImage, final int selection, String text) {
         AlertDialog.Builder adb = new AlertDialog.Builder(context);
 
@@ -525,37 +418,32 @@ public class CameraFragment extends Fragment {
         final EditText etName = clothingTypeSelector.findViewById(R.id.et_name);
         imgClothing.setBackground(new BitmapDrawable(getResources(), croppedImage));
 
-        Log.d(TAG, "DEBUG CF 459");
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_item, Arrays.asList(new String[]{"Hat", "Top", "Bottom", "Shoe"}));
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.types_array, R.layout.spinner_item);
 
         mySpinner.setAdapter(adapter);
 
+        // update the spinner
         if (selection == 0) {
-
+            // hats
             mySpinner.setSelection(0);
-            //cap
         }
 
         else if (selection == 1) {
-
+            // bottoms
             mySpinner.setSelection(1);
-            //pants
         }
 
         else if (selection == 2) {
-
+            // tops
             mySpinner.setSelection(2);
-            //shirt
         }
 
         else {
-
+            // shoes
             mySpinner.setSelection(3);
-            //shoes
         }
 
+        // update EditText with the default text
         etName.setText(text);
 
         final List<Integer> dim = new ArrayList<>();
@@ -574,7 +462,6 @@ public class CameraFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         if (etName.getText().toString().trim().equals("")) {
-
                             Toast.makeText(context, "Please enter a name", Toast.LENGTH_LONG).show();
                             displayClothingDetails(croppedImage, selection, "");
                         }
@@ -586,33 +473,24 @@ public class CameraFragment extends Fragment {
                             switch(mySpinner.getSelectedItemPosition()) {
 
                                 case 0:
-
-                                    //Toast.makeText(context, "This is a cap", Toast.LENGTH_LONG).show();
                                     child = "hats/";
                                     break;
 
                                 case 1:
-
-                                    //Toast.makeText(context, "This is a shirt", Toast.LENGTH_LONG).show();
                                     child = "tops/";
                                     break;
 
                                 case 2:
-
-                                    //Toast.makeText(context, "These are pants", Toast.LENGTH_LONG).show();
                                     child = "bottoms/";
                                     break;
 
                                 default:
-
-                                    //Toast.makeText(context, "These are shoes", Toast.LENGTH_LONG).show();
                                     child = "shoes/";
                                     break;
                             }
 
+                            // save file to firebase based on spinner category
                             StorageReference fileReference = mStorageRef.child(child + etName.getText().toString() + " " + System.currentTimeMillis() + ".jpg");
-
-                            Log.d(TAG, "DEBUG CF 640");
 
                             ByteArrayOutputStream baos = new ByteArrayOutputStream();
                             croppedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -636,12 +514,10 @@ public class CameraFragment extends Fragment {
 
         final AlertDialog ad = adb.create();
 
+        // limit the image display size
         ad.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-
-                Log.d(TAG, "DEBUG CF 528 " + ad.getWindow().getAttributes().width);
-
                 ad.getWindow().getAttributes().height = (int) Math.floor(0.7 * height);
                 ad.getWindow().getAttributes().width = (int) Math.floor(0.8 * width);
 
@@ -650,6 +526,7 @@ public class CameraFragment extends Fragment {
             }
         });
 
+        // button design
         ad.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -663,37 +540,23 @@ public class CameraFragment extends Fragment {
 
         ad.show();
 
-        final List<Integer> runningCount = new ArrayList<>();
-        runningCount.add(0);
-
+        // update spinner and re-load the adapter view when a button is clicked
         mySpinner.setOnItemSelectedEvenIfUnchangedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Log.d(TAG, "DEBUG CF 554 " + imgClothing.getLayoutParams().width + ", " + imgClothing.getLayoutParams().height);
-
-
                 ad.cancel();
                 displayClothingDetails(croppedImage, i, etName.getText().toString());
-
-                Log.d(TAG, "DEBUG CF 554 " + runningCount.get(0));
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
-                Log.d(TAG, "DEBUG CF 565 " + runningCount.get(0));
-
                 ad.cancel();
                 displayClothingDetails(croppedImage, selection, etName.getText().toString());
-                //imgClothing.getLayoutParams().width = -1;
-                //imgClothing.getLayoutParams().height = -2;
-
-                Log.d(TAG, "DEBUG CF 565 " + imgClothing.getLayoutParams().width + ", " + imgClothing.getLayoutParams().height);
             }
         });
     }
 
+    // custom spinner class with a listener and selection method
     public class MySpinner extends androidx.appcompat.widget.AppCompatSpinner {
         OnItemSelectedListener listener;
 

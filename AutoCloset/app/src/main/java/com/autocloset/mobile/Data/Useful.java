@@ -9,15 +9,15 @@ public class Useful {
 
     public static int m;
 
+    // given an image crop it 
     public static Bitmap cropImage(Bitmap image) {
 
         int x = image.getWidth();
         int y = image.getHeight();
         double ratio;
 
+        // maintain ratio and set smaller dimension to 100, then crop the image
         if (x < y) {
-
-            System.out.println("DEBUG U 18 x: " + x);
             ratio = 100.0 / x;
             x = 100;
             y = (int) (ratio * ((double) y));
@@ -26,8 +26,6 @@ public class Useful {
 
             return Bitmap.createBitmap(image, 0, (y - 100) /2, 100, 100);
         } else {
-
-            System.out.println("DEBUG U 28 y: " + y);
             ratio = 100.0 / y;
             y = 100;
             x = (int) (ratio * ((double) x));
@@ -39,10 +37,11 @@ public class Useful {
 
     }
 
+    // make a buffered image grayscale and the foreground lighter than the background
     public static Bitmap monoChromeImage(Bitmap image) {
 
+        // grayscale
         for (int i = 0; i < 100; i++) {
-
             for (int j = 0; j < 100; j++) {
 
                 int c = image.getPixel(j, i);
@@ -54,8 +53,6 @@ public class Useful {
                 int newColor = r + g + b;
                 int newColor2 = Color.rgb(newColor, newColor, newColor);
 
-                System.out.println("DEBUG U 46 " + newColor2);
-
                 image.setPixel(j, i, newColor2);
             }
         }
@@ -63,29 +60,26 @@ public class Useful {
         int b = 0;
         int w = 0;
 
+        // count # of dark and light pixels on the border of the image
         for (int i = 0; i < 100; i ++) {
 
             int c = image.getPixel(i, 0);
 
             if (Color.red(c) <= 80) {
-
                 b++;
             }
 
             else if (Color.red(c) >= 175) {
-
                 w++;
             }
 
             c = image.getPixel(i, 99);
 
             if (Color.red(c) <= 80) {
-
                 b++;
             }
 
             else if (Color.red(c) >= 175) {
-
                 w++;
             }
         }
@@ -117,6 +111,7 @@ public class Useful {
             }
         }
 
+        // flip dark and light pixels if there are more light pixels
         if (b < w) {
 
             for (int i = 0; i < 100; i++) {
@@ -139,93 +134,25 @@ public class Useful {
         return image;
     }
 
+    // make a buffered image black and white
     public static Bitmap blackWhiteImage(Bitmap image) {
 
+        // BFS algorithm to convert dark pixels to black
         boolean[][] searched = new boolean[100][100];
 
         m = 0;
 
-        int black = 0;
-        int white = 0;
-
-        for (int i = 0; i < 100; i ++) {
-
-            int p = image.getPixel(0, i);
-
-            int r = (short) ((p >> 16) & 0xFF);
-            int g = (short) ((p >> 8) & 0xFF);
-            int b = (short) (p & 0xFF);
-
-            if (r + g + b <= 200) {
-
-                black ++;
-            }
-
-            else if (r + g + b >= 665) {
-
-                white ++;
-            }
-
-            p = image.getPixel(i, 0);
-
-            r = (short) ((p >> 16) & 0xFF);
-            g = (short) ((p >> 8) & 0xFF);
-            b = (short) (p & 0xFF);
-
-            if (r + g + b <= 200) {
-
-                black ++;
-            }
-
-            else if (r + g + b >= 665) {
-
-                white ++;
-            }
-
-            p = image.getPixel(i, 99);
-
-            r = (short) ((p >> 16) & 0xFF);
-            g = (short) ((p >> 8) & 0xFF);
-            b = (short) (p & 0xFF);
-
-            if (r + g + b <= 200) {
-
-                black ++;
-            }
-
-            else if (r + g + b >= 665) {
-
-                white ++;
-            }
-
-            p = image.getPixel(99, i);
-
-            r = (short) ((p >> 16) & 0xFF);
-            g = (short) ((p >> 8) & 0xFF);
-            b = (short) (p & 0xFF);
-
-            if (r + g + b < 382) {
-
-                black ++;
-            }
-
-            else {
-
-                white ++;
-            }
-        }
-
-        System.out.println("DEBUG U 216 " + white + ", " + black);
-
         ArrayList<int[]> queue = new ArrayList<>();
+        // top-left, moving towards bottom-right
         queue.add(new int[]{0, 0, -1});
-
         blackWhiteBFS(image, searched, queue, new int[]{0, 1, 1}, new int[]{1, 0, 1});
 
+        // bottom-right, moving towards top-left
         queue.clear();
         queue.add(new int[]{99, 99, -1});
         blackWhiteBFS(image, searched, queue, new int[]{0, -1, -1}, new int[]{-1, 0, -1});
 
+        // remaining 2 corners, similar to above
         queue.clear();
         queue.add(new int[]{0, 99, -1});
         blackWhiteBFS(image, searched, queue, new int[]{0, 1, 1}, new int[]{-1, 0, -1});
@@ -234,8 +161,8 @@ public class Useful {
         queue.add(new int[]{99, 0, -1});
         blackWhiteBFS(image, searched, queue, new int[]{0, -1, -1}, new int[]{1, 0, 1});
 
+        // convert remaining pixels to white
         for (int k = 0; k < 100; k++) {
-
             for (int l = 0; l < 100; l ++) {
 
                 int c = image.getPixel(k, l);
@@ -245,17 +172,15 @@ public class Useful {
                 int b = Color.blue(c);
 
                 if (b + g + r > 30) {
-
                     image.setPixel(k, l, Color.WHITE);
                 }
             }
         }
 
-        System.out.println("DEBUG U 212 " + m);
-
         return image;
     }
 
+    // BFS from a specified starting point, with adjacent nodes in a certain direction as specified by dI and dJ
     public static boolean[][] blackWhiteBFS(Bitmap image, boolean[][] searched, ArrayList<int[]> queue, int[] dI, int[] dJ) {
 
         if (queue.size() > 0) {
@@ -275,8 +200,6 @@ public class Useful {
                 int b = (short) (p & 0xFF);
 
                 int c = r + g + b;
-
-                System.out.println("DEBUG U 182 " + lastC + ", " + c);
 
                 if (lastC == -1) {
 
@@ -330,8 +253,6 @@ public class Useful {
                 int b = (short) (p & 0xFF);
 
                 int c = r + g + b;
-
-                System.out.println("DEBUG U 182 " + lastC + ", " + c);
 
                 if (Math.abs(c - lastC) <= 100) {
 

@@ -35,6 +35,7 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
     private int mType;
     private long mUserID;
 
+    // a piece of clothing, attached to a Firebase storage reference
     public class Clothing {
 
         private String name;
@@ -98,26 +99,18 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
         switch(type) {
 
             case 0:
-
-                //Toast.makeText(context, "This is a cap", Toast.LENGTH_LONG).show();
                 child = "hats/";
                 break;
 
             case 1:
-
-                //Toast.makeText(context, "This is a shirt", Toast.LENGTH_LONG).show();
                 child = "tops/";
                 break;
 
             case 2:
-
-                //Toast.makeText(context, "These are pants", Toast.LENGTH_LONG).show();
                 child = "bottoms/";
                 break;
 
             default:
-
-                //Toast.makeText(context, "These are shoes", Toast.LENGTH_LONG).show();
                 child = "shoes/";
                 break;
         }
@@ -125,6 +118,7 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
         // firebase call
         mStorageRef = FirebaseStorage.getInstance().getReference("images/" + userID + "/" + child);
 
+        // get all items and add them to adapter's items list
         mStorageRef.listAll()
                 .addOnCompleteListener(new OnCompleteListener<ListResult>() {
                     @Override
@@ -134,8 +128,6 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
 
                             try {
 
-                                Log.d(TAG, "DEBUG CA 89 " + mStorageRef.getPath());
-
                                 for (final StorageReference item : task.getResult().getItems()) {
 
                                     final String[] nameA = item.getName().split(" ");
@@ -143,8 +135,6 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
                                     item.getBytes(1000000).addOnCompleteListener(new OnCompleteListener<byte[]>() {
                                         @Override
                                         public void onComplete(@NonNull Task<byte[]> task) {
-
-                                            Log.d(TAG, "DEBUG CA 101");
 
                                             if (task.isSuccessful()) {
 
@@ -157,23 +147,18 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
                                                 byte[] image = task.getResult();
                                                 mItems.add(new Clothing(name, image, item));
 
-                                                Log.d(TAG, "DEBUG CA 103 " + mItems.size());
-
                                                 notifyDataSetChanged();
 
                                                 mParent.updateNullViews();
                                             }
 
                                             else {
-
                                                 Log.d(TAG, "DEBUG CA 117 " + task.getException());
                                             }
                                         }
                                     });
                                 }
                             } catch (NullPointerException e) {Log.d(TAG, "DEBUG CA 122 " + e);}
-
-                            Log.d(TAG, "DEBUG CA 155 " + mItems.size());
                         }
 
                         else {
@@ -185,6 +170,7 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
     }
 
     public void refresh() {
+        // reload firebase items into frontend
 
         mItems.clear();
 
@@ -193,26 +179,18 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
         switch(mType) {
 
             case 0:
-
-                //Toast.makeText(context, "This is a cap", Toast.LENGTH_LONG).show();
                 child = "hats/";
                 break;
 
             case 1:
-
-                //Toast.makeText(context, "This is a shirt", Toast.LENGTH_LONG).show();
                 child = "tops/";
                 break;
 
             case 2:
-
-                //Toast.makeText(context, "These are pants", Toast.LENGTH_LONG).show();
                 child = "bottoms/";
                 break;
 
             default:
-
-                //Toast.makeText(context, "These are shoes", Toast.LENGTH_LONG).show();
                 child = "shoes/";
                 break;
         }
@@ -229,8 +207,6 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
 
                             try {
 
-                                Log.d(TAG, "DEBUG CA 89 " + mStorageRef.getPath());
-
                                 for (final StorageReference item : task.getResult().getItems()) {
 
                                     final String[] nameA = item.getName().split(" ");
@@ -238,8 +214,6 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
                                     item.getBytes(1000000).addOnCompleteListener(new OnCompleteListener<byte[]>() {
                                         @Override
                                         public void onComplete(@NonNull Task<byte[]> task) {
-
-                                            Log.d(TAG, "DEBUG CA 101");
 
                                             if (task.isSuccessful()) {
 
@@ -251,8 +225,6 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
 
                                                 byte[] image = task.getResult();
                                                 mItems.add(new Clothing(name, image, item));
-
-                                                Log.d(TAG, "DEBUG CA 103 " + mItems.size());
 
                                                 notifyDataSetChanged();
 
@@ -267,12 +239,9 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
                                     });
                                 }
                             } catch (NullPointerException e) {Log.d(TAG, "DEBUG CA 122 " + e);}
-
-                            Log.d(TAG, "DEBUG CA 155 " + mItems.size());
                         }
 
                         else {
-
                             Log.d(TAG, "DEBUG CA 118 " + task.getException());
                         }
                     }
@@ -287,32 +256,24 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
 
             super(itemView);
 
-            Log.d(TAG, "DEBUG 172 ");
-
             ivClothing = (ImageView) itemView.findViewById(R.id.iv_clothing);
-
-            Log.d(TAG, "DEBUG CA 174");
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-
             int position = (int) view.getTag(R.id.clothingID);
 
-            Log.d(TAG, "DEBUG CA 184");
-
+            // trigger on click event to display clothing details
             mClickHandler.onClickEvent(mItems.get(position));
         }
     }
 
     public ClothingViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-
-        Log.d(TAG, "DEBUG 192 ");
+        // display the loaded item
 
         View ivClothing = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rv_clothing_item, viewGroup, false);
-
 
         if (mWidth < mHeight) {
             ivClothing.getLayoutParams().width = (mWidth / 5) - 10;
@@ -331,8 +292,6 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.Clothi
     }
 
     public void onBindViewHolder(@NonNull ClothingViewHolder holder, int i) {
-
-        Log.d(TAG, "DEBUG 214 " + i);
 
         holder.ivClothing.setBackground(new BitmapDrawable(mContext.getResources(), BitmapFactory.decodeByteArray(mItems.get(i).getImgData(), 0, mItems.get(i).getImgData().length)));
         holder.itemView.setTag(R.id.clothingID, i);

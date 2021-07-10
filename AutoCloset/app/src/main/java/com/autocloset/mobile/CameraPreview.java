@@ -30,7 +30,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         mCamera = camera;
         c = context;
 
-        // Install a SurfaceHolder.Callback so we get notified when the
+        // install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
         mHolder = getHolder();
         mHolder.addCallback(this);
@@ -39,7 +39,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
-        // The Surface has been created, now tell the camera where to draw the preview.
+        // the Surface has been created, now tell the camera where to draw the preview.
         try {
             mCamera.setPreviewDisplay(holder);
             mCamera.startPreview();
@@ -49,12 +49,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
-        // empty. Take care of releasing the Camera preview in your activity.
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-        // If your preview can change or rotate, take care of those events here.
-        // Make sure to stop the preview before resizing or reformatting it.
 
         if (mHolder.getSurface() == null){
             // preview surface does not exist
@@ -67,9 +64,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         } catch (Exception e){
             // ignore: tried to stop a non-existent preview
         }
-
-        // set preview size and make any resize, rotate or
-        // reformatting changes here
 
         // start preview with new settings
 
@@ -85,34 +79,25 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         int width = size.x;
         int height = size.y;
 
+        // rotate camera preview to be upright
+
         if(display.getRotation() == Surface.ROTATION_0) {
             setPreviewSize(parameters, height, width);
             mCamera.setDisplayOrientation(90);
-
-            Log.d(TAG,"DEBUG CP 99");
         }
 
         if(display.getRotation() == Surface.ROTATION_90) {
             setPreviewSize(parameters, width, height);
-
-            Log.d(TAG,"DEBUG CP 105");
         }
 
         if(display.getRotation() == Surface.ROTATION_180) {
             setPreviewSize(parameters, height, width);
-
-            Log.d(TAG,"DEBUG CP 111");
         }
 
         if(display.getRotation() == Surface.ROTATION_270) {
             setPreviewSize(parameters, width, height);
             mCamera.setDisplayOrientation(180);
-
-            Log.d(TAG,"DEBUG CP 118");
         }
-
-        Log.d(TAG, "DEBUG CP 95: height: " + height
-                + "\nwidth: " + width);
 
         mCamera.setParameters(parameters);
 
@@ -126,6 +111,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
     }
 
+    // updates the preview's dimensions
     private void setPreviewSize(Camera.Parameters param, int w, int h) {
 
         List<Camera.Size> allSizes = param.getSupportedPreviewSizes();

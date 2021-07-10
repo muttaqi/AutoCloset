@@ -47,14 +47,6 @@ import static android.content.ContentValues.TAG;
  * create an instance of this fragment.
  */
 public class MainFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -80,19 +72,12 @@ public class MainFragment extends Fragment {
     public static MainFragment newInstance(String param1, String param2) {
         MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -132,6 +117,7 @@ public class MainFragment extends Fragment {
 
         long userID = ((MainActivity) getActivity()).userID;
 
+        // adapters for all categories
         hatAdapter = new ClothingAdapter(context, 0, new ClothingAdapter.ClothingAdapterOnClickHandler() {
             @Override
             public void onClickEvent(ClothingAdapter.Clothing c) {
@@ -161,6 +147,7 @@ public class MainFragment extends Fragment {
             }
         }, width, height, userID, this);
 
+        // attach recycler views to adapters
         rvHat.setAdapter(hatAdapter);
         rvTop.setAdapter(topAdapter);
         rvBottom.setAdapter(bottomAdapter);
@@ -211,7 +198,6 @@ public class MainFragment extends Fragment {
     }
 
     public void refreshAdapters() {
-
         hatAdapter.refresh();
         topAdapter.refresh();
         bottomAdapter.refresh();
@@ -221,46 +207,39 @@ public class MainFragment extends Fragment {
     public void updateNullViews() {
 
         if (hatAdapter.getItemCount() == 0) {
-
             tvHatNull.setVisibility(View.VISIBLE);
         }
 
         else {
-
             tvHatNull.setVisibility(View.INVISIBLE);
         }
 
         if (topAdapter.getItemCount() == 0) {
-
             tvTopNull.setVisibility(View.VISIBLE);
         }
 
         else {
-
             tvTopNull.setVisibility(View.INVISIBLE);
         }
 
         if (bottomAdapter.getItemCount() == 0) {
-
             tvBottomNull.setVisibility(View.VISIBLE);
         }
 
         else {
-
             tvBottomNull.setVisibility(View.INVISIBLE);
         }
 
         if (shoeAdapter.getItemCount() == 0) {
-
             tvShoeNull.setVisibility(View.VISIBLE);
         }
 
         else {
-
             tvShoeNull.setVisibility(View.INVISIBLE);
         }
     }
 
+    // display clothing details (name, category, preview)
     public void displayClothingDetails(final byte[] image, final int selection, String text, final StorageReference mStorageRef) {
         AlertDialog.Builder adb = new AlertDialog.Builder(context);
 
@@ -279,35 +258,28 @@ public class MainFragment extends Fragment {
         final EditText etName = clothingTypeSelector.findViewById(R.id.et_name);
         imgClothing.setBackground(new BitmapDrawable(context.getResources(), BitmapFactory.decodeByteArray(image, 0, image.length)));
 
-        Log.d(TAG, "DEBUG CF 459");
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_item, Arrays.asList(new String[]{"Hat", "Top", "Bottom", "Shoe"}));
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.types_array, R.layout.spinner_item);
 
         mySpinner.setAdapter(adapter);
 
         if (selection == 0) {
-
             mySpinner.setSelection(0);
-            //cap
+            // hats
         }
 
         else if (selection == 1) {
-
             mySpinner.setSelection(1);
-            //pants
+            // bottoms
         }
 
         else if (selection == 2) {
-
             mySpinner.setSelection(2);
-            //shirt
+            // tops
         }
 
         else {
-
             mySpinner.setSelection(3);
-            //shoes
+            // shoes
         }
 
         etName.setText(text);
@@ -323,6 +295,7 @@ public class MainFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }
                 })
+                // update name and category
                 .setPositiveButton("SAVE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -340,32 +313,25 @@ public class MainFragment extends Fragment {
                             switch(mySpinner.getSelectedItemPosition()) {
 
                                 case 0:
-
-                                    //Toast.makeText(context, "This is a cap", Toast.LENGTH_LONG).show();
                                     child = "hats/";
                                     break;
 
                                 case 1:
-
-                                    //Toast.makeText(context, "This is a shirt", Toast.LENGTH_LONG).show();
                                     child = "tops/";
                                     break;
 
                                 case 2:
-
-                                    //Toast.makeText(context, "These are pants", Toast.LENGTH_LONG).show();
                                     child = "bottoms/";
                                     break;
 
                                 default:
-
-                                    //Toast.makeText(context, "These are shoes", Toast.LENGTH_LONG).show();
                                     child = "shoes/";
                                     break;
                             }
 
                             final String fChild = child;
 
+                            // save changes to firebase
                             mStorageRef.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -374,14 +340,11 @@ public class MainFragment extends Fragment {
 
                                         StorageReference fileReference = mStorageRef.getParent().getParent().child(fChild + etName.getText().toString() + " " + System.currentTimeMillis() + ".jpg");
 
-                                        Log.d(TAG, "DEBUG CF 640");
-
                                         fileReference.putBytes(image).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
                                                 if (task.isSuccessful()) {
-
                                                     Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
                                                     refreshAdapters();
                                                 } else {
@@ -401,6 +364,7 @@ public class MainFragment extends Fragment {
                         }
                     }
                 })
+                // delete the item and update firebase
                 .setNegativeButton("DELETE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -431,14 +395,6 @@ public class MainFragment extends Fragment {
         ad.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-
-                Log.d(TAG, "DEBUG CF 528 " + ad.getWindow().getAttributes().width);
-
-                /*ad.getWindow().getAttributes().height = (int) Math.floor(0.7 * height);
-                ad.getWindow().getAttributes().width = (int) Math.floor(0.8 * width);
-
-                imgClothing.getLayoutParams().height = (int) Math.floor(0.6 * height);
-                imgClothing.getLayoutParams().width = (int) Math.floor(0.4 * height);*/
             }
         });
 
@@ -462,31 +418,19 @@ public class MainFragment extends Fragment {
         mySpinner.setOnItemSelectedEvenIfUnchangedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Log.d(TAG, "DEBUG CF 554 " + imgClothing.getLayoutParams().width + ", " + imgClothing.getLayoutParams().height);
-
-
                 ad.cancel();
                 displayClothingDetails(image, i, etName.getText().toString(), mStorageRef);
-
-                Log.d(TAG, "DEBUG CF 554 " + runningCount.get(0));
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
-                Log.d(TAG, "DEBUG CF 565 " + runningCount.get(0));
-
                 ad.cancel();
                 displayClothingDetails(image, selection, etName.getText().toString(), mStorageRef);
-                //imgClothing.getLayoutParams().width = -1;
-                //imgClothing.getLayoutParams().height = -2;
-
-                Log.d(TAG, "DEBUG CF 565 " + imgClothing.getLayoutParams().width + ", " + imgClothing.getLayoutParams().height);
             }
         });
     }
 
+    // custom spinner with a listener for setting selection
     public class MySpinner extends androidx.appcompat.widget.AppCompatSpinner {
         OnItemSelectedListener listener;
 
@@ -513,7 +457,6 @@ public class MainFragment extends Fragment {
     }
 
     public boolean adaptersReady() {
-
         return hatAdapter != null &&
                 topAdapter != null &&
                 bottomAdapter != null &&

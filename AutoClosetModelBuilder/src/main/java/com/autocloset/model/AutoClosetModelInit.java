@@ -27,37 +27,19 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.Random;
 
-/**
- * This code example is featured in this youtube video
- * https://www.youtube.com/watch?v=zrTSs715Ylo
- *
- * This differs slightly from the Video Example,
- * The Video example had the data already downloaded
- * This example includes code that downloads the data
- *
- * Data is downloaded from
- * wget http://github.com/myleott/mnist_png/raw/master/mnist_png.tar.gz
- * followed by tar xzvf mnist_png.tar.gz
- *
- * This examples builds on the MnistImagePipelineExample
- * by Saving the Trained Network
- */
+// module for creating our model and training it
 public class AutoClosetModelInit {
     private static Logger log = LoggerFactory.getLogger(AutoClosetModelInit.class);
 
-    /** Data URL for downloading */
-    public static final String DATA_URL = "http://github.com/myleott/mnist_png/raw/master/mnist_png.tar.gz";
-
-    /** Location to save and extract the training/testing data */
-    public static final String DATA_PATH = "C:/Users/Home-PC_2/dl4j-examples - Copy/dl4j-examples/src/main/resources/clothes";
+    // location to save and extract the training/testing data
+    public static final String DATA_PATH = "../clothing";
 
     public static void main(String[] args) throws Exception {
 
         System.out.println("DATA PATH: " + DATA_PATH);
 
         // image information
-        // 28 * 28 grayscale
-        // grayscale implies single channel
+        // 100 * 100 grayscale; single channel
         int height = 100;
         int width = 100;
         int channels = 1;
@@ -67,40 +49,28 @@ public class AutoClosetModelInit {
         int outputNum = 4;
         int numEpochs = 15;
 
-    /*
-    This class downloadData() downloads the data
-    stores the data in java's tmpdir 15MB download compressed
-    It will take 158MB of space when uncompressed
-    The data can be downloaded manually here
-    http://github.com/myleott/mnist_png/raw/master/mnist_png.tar.gz
-    */
-
-        // Define the File Paths
         File trainData = new File(DATA_PATH + "/train-data");
 
-        // Define the FileSplit(PATH, ALLOWED FORMATS,random)
+        // define the FileSplit
         FileSplit train = new FileSplit(trainData, NativeImageLoader.ALLOWED_FORMATS, randNumGen);
 
-        // Extract the parent path as the image label
+        // extract the parent path as the image label
         ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
 
         ImageRecordReader recordReader = new ImageRecordReader(height, width, channels, labelMaker);
 
-        // Initialize the record reader
-        // add a listener, to extract the name
+        // initialize the record reader
         recordReader.initialize(train);
-        //recordReader.setListeners(new LogRecordListener());
 
-        // DataSet Iterator
         DataSetIterator dataIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, outputNum);
 
-        // Scale pixel values to 0-1
+        // scale pixel values to 0-1
         DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
         scaler.fit(dataIter);
         dataIter.setPreProcessor(scaler);
 
-        // Build Our Neural Network
         log.info("BUILD MODEL");
+        // build our model
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
             .seed(rngseed)
             .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
@@ -133,13 +103,11 @@ public class AutoClosetModelInit {
         }
 
         log.info("SAVE TRAINED MODEL");
-        // Where to save model
+        
+        // save the model to a zip file
         File locationToSave = new File(DATA_PATH + "/trained_clothing_model.zip");
 
-        // boolean save Updater
         boolean saveUpdater = false;
-
-        // ModelSerializer needs modelname, saveUpdater, Location
         ModelSerializer.writeModel(model, locationToSave, saveUpdater);
     }
 
